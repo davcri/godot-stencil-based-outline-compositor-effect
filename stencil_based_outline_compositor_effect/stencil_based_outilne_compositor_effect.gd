@@ -493,7 +493,7 @@ func _render_callback(_p_effect_callback_type, p_render_data):
     @warning_ignore("integer_division")
     var y_groups : int = (resolution.y - 1) / 8 + 1
     var push_constant := PackedByteArray()
-    push_constant.resize(16) # Must be a multiple of 16 bytes
+    push_constant.resize(4) 
 
     # Run the jump-flood pipeline the required number of passes, swapping the
     # textures between each pass.
@@ -536,7 +536,7 @@ func _render_callback(_p_effect_callback_type, p_render_data):
     # construct the push constant for drawing our outlines.  It contains the
     # outline color, and the outline thickness squared
     var do_push_constant = PackedByteArray()
-    do_push_constant.resize(32)
+    do_push_constant.resize(20)
     do_push_constant.encode_float(0, outline_color.r)
     do_push_constant.encode_float(4, outline_color.g)
     do_push_constant.encode_float(8, outline_color.b)
